@@ -1,0 +1,32 @@
+# the above code traverses only the vertices reachable from a given source vertex.
+# All the vertices may not be reachable from a given vertex (example Disconnected graph).
+graph = {'A':['B','C'],'B':['D','E'],'C':['F'],'D':[],'E':['F'],'F':[]}
+visited=[]
+queue=[]
+def bfs(visited,graph,node):
+    visited.append(node) #visited=['A']
+    queue.append(node) #queue=['A']
+    while(queue):
+        s= queue.pop(0) #s='A', queue=[]
+        #s='B'
+        #s='C'
+        #s='D'
+        #s='E'
+        #'F'
+        print(s,end=" ") #'A','B','C','D','E', 'F'
+
+        for neighbour in graph[s]: #graph['A'], neighbour= B,C
+            #'D','E'
+            #'F'
+            #[]
+            #'F'
+            if neighbour not in visited: #'B' not in visited
+                visited.append(neighbour) #visited=['A','B','C']
+                #visited=['A','B','C','D','E']
+                #visited=['A','B','C','D','E','F']
+                queue.append(neighbour) #queue=['B','C']
+                #queue=['C','D','E']
+                #queue=['D','E',F']
+bfs(visited,graph,'A')
+
+#since all of the nodes and vertices are visited, the time complexity for BFS on a graph is O(V+E), v=vertices, e=edges
