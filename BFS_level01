@@ -1,3 +1,4 @@
+# OUTPUT: A B C D E F
 # the above code traverses only the vertices reachable from a given source vertex.
 # All the vertices may not be reachable from a given vertex (example Disconnected graph).
 graph = {'A':['B','C'],'B':['D','E'],'C':['F'],'D':[],'E':['F'],'F':[]}
