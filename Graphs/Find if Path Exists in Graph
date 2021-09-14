@@ -1,0 +1,27 @@
+from collections import defaultdict, deque
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
+        if not edges:
+            return True
+        def createAdjList(edges):
+            graph=defaultdict(list)
+            for i,j in edges:
+                graph[i].append(j)
+                graph[j].append(i)
+            return graph
+        def bfs(graph):
+            visited = set()
+            q= deque()
+            q.append(start)
+            while q:
+                popped= q.popleft()
+                if popped == end:
+                    return True
+                for node in graph[popped]:
+                    if node not in visited:
+                        visited.add(node)
+                        q.append(node)
+            return False
+        graph= createAdjList(edges)
+        return bfs(graph)
+    
