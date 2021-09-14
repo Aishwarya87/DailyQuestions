@@ -13,15 +13,17 @@ class Solution:
             visited = set()
             q= deque()
             q.append(start)
+            visited.add(start)
             while q:
                 popped= q.popleft()
-                if popped == end:
-                    return True
-                for node in graph[popped]:
-                    if node not in visited:
-                        visited.add(node)
-                        q.append(node)
+                for i in graph[popped]:
+                    if i==end:
+                        return True
+                    if i not in visited:
+                        visited.add(i)
+                        q.append(i)
             return False
         graph= createAdjList(edges)
         return bfs(graph)
     
+        
