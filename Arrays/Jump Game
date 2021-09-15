@@ -1,0 +1,11 @@
+# Brute Force = O(n^n)= iinput array of size n, doing every possibility for every element in the tree.
+# can be optimized to O(n^2) when cached.
+# Using greedy solution, time complexity= O(n)
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        goal = len(nums)-1
+        for index in range(len(nums)-1,-1,-1):
+            if index+nums[index]>=goal:
+                goal=index
+        return True if goal is 0 else False
