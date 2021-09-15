@@ -1,0 +1,11 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        #the approach involves keeping the other allowed values in the beginning(similar to             #Quick Sort partition method where we check the values that are not equal to the number)         #and keeping
+        # a counter so that could be returned at last. We can delete the elements as well
+        # but the problem statement says"in-place modification" and not just deleting the               #elements
+        k=0
+        for index in range(len(nums)):
+            if nums[index] != val:
+                nums[k]=nums[index]
+                k+=1
+        return k
