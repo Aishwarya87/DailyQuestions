@@ -1,0 +1,5 @@
+Intuitively outputs the number of conflicting meetings.
+Sorting= O(n log n)
+Memory= O(n)
+
+
