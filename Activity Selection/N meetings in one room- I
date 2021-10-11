@@ -1,0 +1,22 @@
+These type of interval questions have to be sorted either on the start time or on the end time. 
+If the meeting time intersects/conflicts, it is a false.
+(n log n) for sorting based on start time.
+(n) for scanning through.
+Overall Complexity: O(n log n)
+
+--> Compare the end time of the first interval and starting time of the second interval.
+--> if the start time of the second is before the end time of the first, then it's a conflict.
+--> Sorting so that there is no need to compare one meeting with all the other meetings. Its for sure that the third meeting is after the first meeting.
+--> Compare adjacent meetings.
+
+def canAttendMeetings(self,intervals): #Interval is an object(self.start,self.end)
+    intervals.sort(key= lambda i: i.start)
+    
+    for i in range(1,len(intervals)):
+        i1= intervals[i-1] #previous
+        i2= intervals[i] #current
+        
+        if i1.end > i2.start:
+            return False
+            
+    return True # after the loop exhausts
