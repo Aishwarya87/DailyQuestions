@@ -1,0 +1,30 @@
+The paths are TOO MANY. Have to find the path in the goldmine that has maximum gold.
+
+Three elements to DP:
+1) Storage and Meaning
+2) Direction
+3) Travel and Solve
+
+Strategy: every cell in the column will store the maximum gold from that cell that it can yield to.
+Dynamic Programming + greedy
+
+
+import numpy as np
+class Solution:
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        rows= len(grid)
+        cols= len(grid[0])
+        dp = np.zeros([rows, cols], dtype=int)
+        for j in range(cols-1,-1,-1):
+            for i in range(rows-1,-1,-1):
+                if j ==cols-1:
+                    dp[i][j]= grid[i][j]
+                elif i==0:
+                    dp[i][j]= grid[i][j] + max(grid[i][j+1], grid[i+1][j+1])
+                elif i==rows-1:
+                    dp[i][j]= grid[i][j] + max(grid[i][j+1], grid[i-1][j+1])
+                else:
+                    dp[i][j]= grid[i][j] + max(grid[i][j+1], grid[i-1][j+1], grid[i+1][j+1])
+        print(dp)
+        return max(dp[:,0])
+
